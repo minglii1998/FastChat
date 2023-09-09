@@ -33,3 +33,4 @@ build
 scripts_slurm
 trained_models*
 workspace
+outlogging.*
