@@ -1,13 +1,13 @@
-torchrun --nproc_per_node=4 fastchat/train/train_mem.py \
+torchrun --nproc_per_node=8 fastchat/train/train_mem.py \
     --model_name_or_path meta-llama/Llama-2-13b-hf \
     --data_path data/ShareGPT_Reflection_Alp_QA.json \
     --cache_dir ../cache \
     --bf16 True \
     --output_dir trained_models/ShareGPT_Reflection_Alp_QA_13B \
     --num_train_epochs 3 \
-    --per_device_train_batch_size 1 \
-    --per_device_eval_batch_size 1 \
-    --gradient_accumulation_steps 32 \
+    --per_device_train_batch_size 2 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 8 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
     --save_steps 2000 \

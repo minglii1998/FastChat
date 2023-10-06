@@ -1,13 +1,13 @@
-torchrun --nproc_per_node=4 fastchat/train/train_mem.py \
-    --model_name_or_path meta-llama/Llama-2-70b-hf \
-    --data_path data/Reflection_Wiz_All_QA.json \
+torchrun --nproc_per_node=8 fastchat/train/train_mem.py \
+    --model_name_or_path meta-llama/Llama-2-13b-hf \
+    --data_path data/ShareGPT_WizrdLM_ALL_whole_Q_then_A_4096.json \
     --cache_dir ../cache \
     --bf16 True \
-    --output_dir trained_models/Reflection_Wiz_All_QA_70B \
+    --output_dir trained_models/ShareGPT_WizrdLM_ALL_whole_Q_then_A_4096_13B \
     --num_train_epochs 3 \
-    --per_device_train_batch_size 1 \
-    --per_device_eval_batch_size 1 \
-    --gradient_accumulation_steps 32 \
+    --per_device_train_batch_size 2 \
+    --per_device_eval_batch_size 2 \
+    --gradient_accumulation_steps 8 \
     --evaluation_strategy "no" \
     --save_strategy "steps" \
     --save_steps 2000 \
@@ -20,7 +20,7 @@ torchrun --nproc_per_node=4 fastchat/train/train_mem.py \
     --fsdp "full_shard auto_wrap offload" \
     --fsdp_transformer_layer_cls_to_wrap 'LlamaDecoderLayer' \
     --tf32 True \
-    --model_max_length 2048 \
+    --model_max_length 4096 \
     --gradient_checkpointing True \
     --lazy_preprocess True
 
