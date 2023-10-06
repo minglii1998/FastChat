@@ -1,9 +1,9 @@
 torchrun --nproc_per_node=8 fastchat/train/train_mem.py \
     --model_name_or_path meta-llama/Llama-2-13b-hf \
-    --data_path data/Reflection_Wiz_All_QA.json \
+    --data_path data/ShareGPT_Reflection_Wiz_All_QA.json \
     --cache_dir ../cache \
     --bf16 True \
-    --output_dir trained_models/Reflection_Wiz_All_QA_13B \
+    --output_dir trained_models/ShareGPT_Reflection_Wiz_All_QA_13B \
     --num_train_epochs 3 \
     --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 2 \
